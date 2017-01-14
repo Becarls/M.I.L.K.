@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class chooser : MonoBehaviour {
+    public bool left = false;
+    public bool right = false;
 
 	// Use this for initialization
 	void Start () {
@@ -9,7 +11,7 @@ public class chooser : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         int i = 0;
         if (Input.GetKey(KeyCode.Q))
             i++;
@@ -86,6 +88,8 @@ public class chooser : MonoBehaviour {
             i++;
         if (Input.GetKey(KeyCode.M))
             i++;
+        if (Input.GetKey(KeyCode.Semicolon))
+            i++;
         if (Input.GetKey(KeyCode.Comma))
             i++;
         if (Input.GetKey(KeyCode.Period))
@@ -102,26 +106,29 @@ public class chooser : MonoBehaviour {
             i++;
         if (Input.GetKey(KeyCode.Alpha0))
             i++;
-
-        if (i != j)
+        if (i != 0 || j != 0)
         {
-            if ((j>4)&&(i > 4))
+            if ((j>3)&&(i > 3))
             {
                 if(i> j)
                 {
-                    print("B");
+                    //print("B");
+                    right = true;
                 }
                 else
                 {
-                    print("A");
+                    //print("A");
+                    left = true;
                 }
             }
-            else if (i > 4)
+            else if (i > 2)
             {
-                print("B");
-            } else if (j > 4)
+                //print("B");
+                right = true;
+            } else if (j > 2)
             {
-                print("A");
+                //print("A");
+                left = true;
             }
         }
 
