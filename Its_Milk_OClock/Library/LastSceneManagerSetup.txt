@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Bden's Bastion.unity
+- path: Assets/Red Dad's Redemption.unity
   isLoaded: 1
   isActive: 1
