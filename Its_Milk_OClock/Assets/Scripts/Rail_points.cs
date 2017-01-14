@@ -33,7 +33,7 @@ public class Rail_points : MonoBehaviour {
         //Initialize point array
         int num_points = GetChildren(ref point_array, points);
        // print(num_points);
-        MoveLoop(num_points, point_array);
+        StartCoroutine(MoveLoop(num_points, point_array));
     }
 
     IEnumerator Move(GameObject p1) {
@@ -95,21 +95,22 @@ public class Rail_points : MonoBehaviour {
 
 
 
-    void MoveLoop(int num_points, GameObject[] pt_arr) {
+    IEnumerator MoveLoop(int num_points, GameObject[] pt_arr) {
         int decision_counter = 0;
         for (int i = 0; i < num_points; i++) {
            // print(pt_arr.Length);
             if (pt_arr[i].transform.childCount > 0) {
                 GameObject[] new_pt_arr = new GameObject[pt_arr[i].transform.childCount];
                 int new_num_points = GetChildren(ref new_pt_arr, pt_arr[i]);
-                MoveLoop(new_num_points, new_pt_arr);
+                yield return MoveLoop(new_num_points, new_pt_arr);
+                yield break;
             }
             if (i == num_points - 3) {
-                StartCoroutine(Move(point_array[i], pt_arr[i + 1], point_array[i + 2], desicion_array[decision_counter], desicion_array[decision_counter + 1]));
+                yield return StartCoroutine(Move(point_array[i], pt_arr[i + 1], point_array[i + 2], desicion_array[decision_counter], desicion_array[decision_counter + 1]));
                 decision_counter += 2;
             }
 
-            StartCoroutine(Move(pt_arr[i]));
+            yield return StartCoroutine(Move(pt_arr[i]));
         }
     }
 }
