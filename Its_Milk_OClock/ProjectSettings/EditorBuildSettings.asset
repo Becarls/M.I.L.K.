@@ -4,4 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/start.unity
+  - enabled: 1
+    path: Assets/Red Dad Redemption 3.unity
+  - enabled: 1
+    path: Assets/defeat.unity
+  - enabled: 1
+    path: Assets/victory.unity
